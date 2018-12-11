@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Echarts案例</title>
+    <style>
+        body{
+            background-color:#ccc
+        }
+    </style>
+    <script src="js/jquery-1.12.5.js"></script>
+    <script src="js/angularjs.js"></script>
+    <script src="js/echarts.js"></script>
+</head>
+<body ng-app="app">
+    <div ng-controller="demoCtrl">
+         <!-- <h2>Echarts案例</h2> -->
+         <div style="height:100%;width:100%;display: flex">
+            <div class="left" style="flex: 1">
+                <div style="width:100%;height:380px;background-color:#010908">
+                    <div style="height: 28px;background-color: #051930;line-height: 28px;text-align: center;color: #B7D9FF">AI图谱</div>
+                    <div style="color: #B7D9FF;padding-left:30px;font-size: 12px;margin-top: 5px;position: relative;">
+                        水量仿真
+                        <div style="position:absolute;width: 25px;height: 3px;background: #254D74;top: 8px;left: 90px;border-radius: 5px;"></div>
+                        <div style="position:absolute;width: 50%;height: 1px;background: #254D74;top: 9px;left: 105px;"></div>
+                        <div style="position:absolute;width: 4px;height: 10px;background: #254D74;top: 5px;left: calc(50% + 103px);"></div>
+                    </div>
+                    <!-- 关系图 -->
+                    <div e-chart e-data="relationOptions" style="width:100%;height:150px;background:rgba(1,9,8,1) "></div>
+                    <!-- <div e-chart e-data="relationOptions2" style="width:400px;height:150px;background:rgba(1,9,8,1) "></div> -->
+                    <div style="color: #B7D9FF;padding-left:30px;font-size: 12px;position: relative;">
+                        图谱识别
+                        <div style="position:absolute;width: 25px;height: 3px;background: #254D74;top: 8px;left: 90px;border-radius: 5px;"></div>
+                        <div style="position:absolute;width: 50%;height: 1px;background: #254D74;top: 9px;left: 105px;"></div>
+                        <div style="position:absolute;width: 4px;height: 10px;background: #254D74;top: 5px;left: calc(50% + 103px);"></div>
+                    </div>
+                     <!-- 折线图 -->
+                    <div e-chart e-data="lineOptions" style="width:100%;height:150px;background:rgba(1,9,8,1) "></div>
+                </div>
+                <div style="width:100%;height:380px;background-color:#010908">
+                    <div style="height: 28px;background-color: #051930;line-height: 28px;text-align: center;color: #B7D9FF">AI大数据</div>
+                    <div style="color: #B7D9FF;padding-left:30px;font-size: 12px;margin-top: 5px;position: relative;">
+                        纸洞扫描
+                        <div style="position:absolute;width: 25px;height: 3px;background: #254D74;top: 8px;left: 90px;border-radius: 5px;"></div>
+                        <div style="position:absolute;width: 50%;height: 1px;background: #254D74;top: 9px;left: 105px;"></div>
+                        <div style="position:absolute;width: 4px;height: 10px;background: #254D74;top: 5px;left: calc(50% + 103px);"></div>
+                    </div>
+                    <!-- 散点图 -->
+                    <div e-chart e-data="scatterOptions" style="width:100%;height:150px;background:rgba(1,9,8,1) "></div>
+                    <div style="color: #B7D9FF;padding-left:30px;font-size: 12px;margin-top: 5px;position: relative;">
+                        大数据
+                        <div style="position:absolute;width: 25px;height: 3px;background: #254D74;top: 8px;left: 90px;border-radius: 5px;"></div>
+                        <div style="position:absolute;width: 50%;height: 1px;background: #254D74;top: 9px;left: 105px;"></div>
+                        <div style="position:absolute;width: 4px;height: 10px;background: #254D74;top: 5px;left: calc(50% + 103px);"></div>
+                    </div>
+                    <!-- 区域图 -->
+                    <div e-chart e-data="areaOptions" style="width:100%;height:150px;background:rgba(1,9,8,1) "></div>
+                </div>
+
+            </div>
+            <div style="width:780px;height: 100px">
+                 中间
+            </div>
+            <div class="right" style="flex: 1">
+                <div style="width:100%;height:380px;background-color:#010908">
+                    <div style="height: 28px;background-color: #051930;line-height: 28px;text-align: center;color: #B7D9FF">AI图谱</div>
+                    <div style="color: #B7D9FF;padding-left:30px;font-size: 12px;margin-top: 5px;position: relative;">
+                        水量仿真
+                        <div style="position:absolute;width: 25px;height: 3px;background: #254D74;top: 8px;left: 90px;border-radius: 5px;"></div>
+                        <div style="position:absolute;width: 50%;height: 1px;background: #254D74;top: 9px;left: 105px;"></div>
+                        <div style="position:absolute;width: 3px;height: 10px;background: #254D74;top: 5px;left: calc(50% + 103px);"></div>
+                    </div>
+                    <!-- 关系图 -->
+                    <div e-chart e-data="relationOptions" style="width:100%;height:150px;background:rgba(1,9,8,1); "></div>
+                    <!-- <div e-chart e-data="relationOptions2" style="width:400px;height:150px;background:rgba(1,9,8,1) "></div> -->
+                    <div style="color: #B7D9FF;padding-left:30px;font-size: 12px;position: relative;">
+                        图谱识别
+                        <div style="position:absolute;width: 25px;height: 3px;background: #254D74;top: 8px;left: 90px;border-radius: 5px;"></div>
+                        <div style="position:absolute;width: 50%;height: 1px;background: #254D74;top: 9px;left: 105px;"></div>
+                        <div style="position:absolute;width: 3px;height: 10px;background: #254D74;top: 5px;left: calc(50% + 103px);"></div>
+                    </div>
+                     <!-- 折线图 -->
+                    <div e-chart e-data="lineOptions" style="width:100%;height:150px;background:rgba(1,9,8,1) ;"></div>
+                </div>
+                <div style="width:100%;height:380px;background-color:#010908">
+                    <div style="height: 28px;background-color: #051930;line-height: 28px;text-align: center;color: #B7D9FF">AI大数据</div>
+                    <div style="color: #B7D9FF;padding-left:30px;font-size: 12px;margin-top: 5px;position: relative;">
+                        纸洞扫描
+                        <div style="position:absolute;width: 25px;height: 3px;background: #254D74;top: 8px;left: 90px;border-radius: 5px;"></div>
+                        <div style="position:absolute;width: 50%;height: 1px;background: #254D74;top: 9px;left: 105px;"></div>
+                        <div style="position:absolute;width: 3px;height: 10px;background: #254D74;top: 5px;left: calc(50% + 103px);"></div>
+                    </div>
+                    <!-- 散点图 -->
+                    <div e-chart e-data="scatterOptions" style="width:100%;height:150px;background:rgba(1,9,8,1) "></div>
+                    <div style="color: #B7D9FF;padding-left:30px;font-size: 12px;margin-top: 5px;position: relative;">
+                        大数据
+                        <div style="position:absolute;width: 25px;height: 3px;background: #254D74;top: 8px;left: 90px;border-radius: 5px;"></div>
+                        <div style="position:absolute;width: 50%;height: 1px;background: #254D74;top: 9px;left: 105px;"></div>
+                        <div style="position:absolute;width: 3px;height: 10px;background: #254D74;top: 5px;left: calc(50% + 103px);"></div>
+                    </div>
+                    <!-- 区域图 -->
+                    <div e-chart e-data="areaOptions" style="width:100%;height:150px;background:rgba(1,9,8,1) "></div>
+                </div>
+            </div>
+         </div>
+         
+    </div>
+    <script>
+        (function(){
+            'use strict';
+        
+            angular
+                .module('app', [
+                    
+                ]).controller('demoCtrl',function ($scope,$interval,$timeout) {
+                   
+                     //转换离散图数据
+                    var translateDate = function (list) {
+                        var _arr = [];
+                        for(var i=0;i<list.length;i++){
+                            var _item = list[i];
+                            var x = _item[0];
+                            var y = _item[1];
+                            if( (x > 0 && x <= 5) && ( y > 0 && y <=40) ){
+                                _arr.push({value:[x,y],itemStyle:{color:'#184F8F'}});
+                                }else if((x > 0 && x <= 5) && (y > 40 && y < 90 ) ){
+                                    _arr.push({value:[x,y],itemStyle:{color:'#4A90E2'}});  
+                                }else if((x > 0 && x <= 5) && (y >= 90 ) ){
+                                    _arr.push({value:[x,y],itemStyle:{color:'#051930'}});  
+                                }else if( (x > 5 && x< 9) && (y>0 && y<= 30) ){
+                                    _arr.push({value:[x,y],itemStyle:{color:'#50E3C2'}});    
+                                }else if((x > 5 && x< 9) && (y>30 && y<= 60)){
+                                     _arr.push({value:[x,y],itemStyle:{color:'#4AD7E2'}}); 
+                                }else if( (x > 9 && x <= 10 ) && (y>50 && y<= 60)){
+                                     _arr.push({value:[x,y],itemStyle:{color:'#F8E71C'}}); 
+                                }else{
+                                     _arr.push({value:[x,y],itemStyle:{color:'#4A90E2'}}); 
+                                 }
+                         }
+                         return _arr;
+                    };
+                    //随机生成散点图数据
+                    var generateRandomList = function(min,max) {
+                        var _arr = [];
+                        var count = Math.round((Math.random()*(max-min)+min));//随机生成 min -max 组数据
+                        for(var i=0;i<count;i++){
+                            var x = (Math.random()*(12-1)+1).toFixed(1);//随机生成x轴坐标
+                            var y = (Math.random()*(100-1)+1).toFixed(2);//随机生成y轴坐标
+                            _arr.push([x,y]);
+                        }
+                        return _arr;
+                    }
+                    //随机生成大数据图数据 max 最大值 min 最小值 num数量
+                    var generateAreaList = function(min,max,num){
+                        var _arr = [];
+                        for(var i=0;i<num;i++){
+                            var x = i;
+                            var y = (Math.random()*(max-min)+min).toFixed(2);//随机生成y轴坐标
+                            _arr.push({value:[x,y]});
+                        }
+                        return _arr;
+                    };
+                    //大数据图随机生成下一个数据 max 最大值 min 最小值 origin_x 记录的上一个x坐标
+                    var generateRandom = function(origin_x,max,min){
+                        var x = origin_x + 1
+                        var y = (Math.random()*(max-min)+min).toFixed(2);//随机生成y轴坐标 
+                        return{
+                            value:[x,y]
+                        }
+                    }
+                    //水量仿真模拟数据(第一种方式)
+                    var generateRelationRandom = function() {
+                        var x = (Math.random()*10).toFixed(1);
+                        var y = (Math.random()*100).toFixed(2);
+                        var _arr ={};
+                        if( (x > 0 && x <= 5) && ( y > 0 && y <=40) ){
+                                _arr =  {value:[x,y],itemStyle:{color:'#184F8F'}};
+                                }else if((x > 0 && x <= 5) && (y > 40 && y < 90 ) ){
+                                    _arr = {value:[x,y],itemStyle:{color:'#4A90E2'}};  
+                                }else if((x > 0 && x <= 5) && (y >= 90 ) ){
+                                    _arr = {value:[x,y],itemStyle:{color:'#051930'}};  
+                                }else if( (x > 5 && x< 9) && (y>0 && y<= 30) ){
+                                    _arr = {value:[x,y],itemStyle:{color:'#50E3C2'}};    
+                                }else if((x > 5 && x< 9) && (y>30 && y<= 60)){
+                                    _arr = {value:[x,y],itemStyle:{color:'#4AD7E2'}}; 
+                                }else if( (x > 9 && x <= 10 ) && (y>50 && y<= 60)){
+                                     _arr = {value:[x,y],itemStyle:{color:'#F8E71C'}}; 
+                                }else{
+                                    _arr = {value:[x,y],itemStyle:{color:'#4A90E2'}}; 
+                                 }
+                        return _arr;
+                    }
+                     //水量仿真模拟数据(第二种方式)
+                     var generateRelationRandom2 = function() {
+                        var x = (Math.random()*10).toFixed(1);
+                        var y = (Math.random()*100).toFixed(2);
+                        var _arr ={};
+                        if( (x > 0 && x <= 5) && ( y > 0 && y <=40) ){
+                                _arr =  {value:y,itemStyle:{color:'#184F8F'}};
+                                }else if((x > 0 && x <= 5) && (y > 40 && y < 90 ) ){
+                                    _arr = {value:y,itemStyle:{color:'#4A90E2'}};  
+                                }else if((x > 0 && x <= 5) && (y >= 90 ) ){
+                                    _arr = {value:y,itemStyle:{color:'#051930'}};  
+                                }else if( (x > 5 && x< 9) && (y>0 && y<= 30) ){
+                                    _arr = {value:y,itemStyle:{color:'#50E3C2'}};    
+                                }else if((x > 5 && x< 9) && (y>30 && y<= 60)){
+                                    _arr = {value:y,itemStyle:{color:'#4AD7E2'}}; 
+                                }else if( (x > 9 && x <= 10 ) && (y>50 && y<= 60)){
+                                     _arr = {value:y,itemStyle:{color:'#F8E71C'}}; 
+                                }else{
+                                    _arr = {value:y,itemStyle:{color:'#4A90E2'}}; 
+                                 }
+                        return _arr;
+                    }
+                    $scope.data = {
+                        dataScatter : generateRandomList(20,30),//离散点数据
+                        dataAreaLine1: generateAreaList(80,35,100),
+                        dataAreaLine2: generateAreaList(30,10,100),
+                    };
+                    $scope.control = {
+                        count : 0,
+                        area_count:0,
+                        relate_count: 0
+                    };
+                    // 折线图配置
+                    $scope.lineOptions = {
+                         grid:{
+                             left:'15%',
+                             top: 20,
+                             right:'15%',
+                             bottom:40,
+                         },
+                         textStyle:{
+                             color:'#96b3d1',
+                             fontSize:8,
+                         },
+                         xAxis:{
+                             type: 'category',
+                             splitLine: false,
+                             name:'(17年)',
+                             nameLocation:'start',
+                             nameTextStyle:{
+                                padding: [35, 0, 0, 0]
+                             },
+                             boundaryGap: false,
+                             offset:5,
+                             axisLine:{
+                                show:false,
+                             },
+                             axisTick:{
+                                show:false,
+                             },
+                             axisLabel:{
+                                textStyle: {
+                                        fontSize:8
+                                    }
+                             },
+                             data:['1','2','3','4','5','6','7','8','9','10','11','12']
+                         },
+                         yAxis:{
+                             type:'value',
+                             min:0,
+                             max:100,
+                             interval:20,
+                             offset:10,
+                             splitLine: false,
+                             axisLine:{
+                                show:false,
+                             },
+                             axisTick:{
+                                show:false,
+                             },
+                             axisLabel:{
+                                textStyle: {
+                                        fontSize:8
+                                    }
+                             }
+                             
+                         },
+                         series:[
+                             {
+                                 type:'line',
+                                 name:'(18年)',
+                                 silent:true,
+                                 lineStyle:{
+                                     color:' #50E3C2'
+                                 },
+                                 symbol:'circle',
+                                 symbolSize:10,
+                                 itemStyle:{
+                                     color:'#051930',
+                                     borderColor:'#50E3C2',
+                                     borderWidth:1,
+                                 },
+                                 markLine:{
+                                     lineStyle:{
+                                        type:'dashed',
+                                        color:'#4c5050',
+                                     },
+                                     symbol:'none',
+                                     label:{
+                                         show:false
+                                     },
+                                     data:[
+                                         {
+                                             yAxis:60,
+                                         }
+                                     ]
+                                 },
+                                 data:[60,66,71,69,88,90,70,65,80,68,54,45]
+                             },
+                             {
+                                 type:'line',
+                                 name:'(17年)',
+                                 silent:true,
+                                 lineStyle:{
+                                     color:' #f5a623'
+                                 },
+                                 symbol:'circle',
+                                 symbolSize:10,
+                                 itemStyle:{
+                                     color:'#051930',
+                                     borderColor:'#f5a623',
+                                     borderWidth:1,
+                                 },
+                                 markLine:{
+                                     lineStyle:{
+                                        type:'dashed',
+                                        color:'#4c5050',
+                                     },
+                                     symbol:'none',
+                                     label:{
+                                         show:false
+                                     },
+                                     data:[
+                                         {
+                                             yAxis:20,
+                                         }
+                                     ]
+                                 },
+                                 data:[20,36,41,49,38,40,40,45,20,38,34,15]
+                             }
+                         ]  
+                    };
+                     //离散图配置
+                    $scope.scatterOptions = {
+                         grid:{
+                            left:'15%',
+                             top: 20,
+                             right:'15%',
+                             bottom:40,
+                         }, 
+                         textStyle:{
+                             color:'#96b3d1',
+                             fontSize:8,
+                         },
+                         xAxis:{
+                             type: 'value',
+                             splitLine: {
+                                 show:false
+                             },
+                             name:'(17年)',
+                             nameLocation:'start',
+                             nameTextStyle:{
+                                padding: [35, 0, 0, 0]
+                             },
+                             min:1,
+                             max:12,
+                             interval:1,
+                             offset:3,
+                             axisLine:{
+                                show:false,//坐标轴线不显示
+                             },
+                             axisTick:{
+                                show:false,//坐标刻度线不显示
+                             },
+                             axisLabel:{
+                                textStyle: {
+                                    fontSize:8//坐标字体大小
+                                }, 
+                             }
+                         },
+                         yAxis:{
+                             type:'value',
+                             min:0,
+                             max:100,
+                             interval:20,
+                             offset:10,
+                             splitLine: false,
+                             axisLine:{
+                                show:false,
+                             },
+                             axisTick:{
+                                show:false,
+                             },
+                             axisLabel:{
+                                textStyle: {
+                                    fontSize:8
+                                }
+                             }
+                         },
+                         series:[
+                             {
+                                 type:'scatter',
+                                 silent:true,
+                                 animation:false,
+                                 itemStyle:{
+                                     normal:{
+                                        opacity: 0.8,
+                                        shadowBlur: 10,
+                                        shadowOffsetX: 0,
+                                        shadowOffsetY: 0,
+                                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                     }
+                                 },
+                                 data : translateDate($scope.data.dataScatter)
+                             }
+                         ],
+                        //  animationDurationUpdate: 100,//动画更新时间
+                        //  animationEasingUpdate: 'cubicInOut'//动画方式
+                    }
+                    //面积图配置
+                    $scope.areaOptions = {
+                        grid:{
+                            left:'15%',
+                             top: 20,
+                             right:'15%',
+                             bottom:40,
+                         }, 
+                         textStyle:{
+                             color:'#96b3d1',
+                             fontSize:8,
+                         },
+                         xAxis:{
+                             type: 'category',
+                             name:'(17年)',
+                             nameLocation:'start',
+                             nameTextStyle:{
+                                padding: [35, 0, 0, 0]
+                             },
+                             splitLine: {
+                                 show:false
+                             },
+                             offset:3,
+                             axisLine:{
+                                show:false,//坐标轴线不显示
+                             },
+                             axisTick:{
+                                show:false,//坐标刻度线不显示
+                             },
+                             axisLabel:{
+                                textStyle: {
+                                    fontSize:8//坐标字体大小
+                                }, 
+                             },
+                         },
+                         yAxis:{
+                             type:'value',
+                             min:0,
+                             max:100,
+                             interval:20,
+                             offset:10,
+                             splitLine: false,
+                             axisLine:{
+                                show:false,
+                             },
+                             axisTick:{
+                                show:false,
+                             },
+                             axisLabel:{
+                                textStyle: {
+                                    fontSize:8
+                                }
+                             }
+                         },
+                         series:[
+                             {
+                                 type:'line',
+                                 smooth:false,
+                                 symbol: 'none',
+                                 sampling: 'average',
+                                 lineStyle:{
+                                    color: '#4385d1',
+                                 },
+                                 areaStyle:{
+                                    color:{
+                                        type:'linear',
+                                        x:0,
+                                        y:0,
+                                        x2:0,
+                                        y2:1,
+                                        colorStops:[
+                                            {
+                                                offset:0,color:'#4385d1'
+                                            },
+                                            {
+                                                offset:0.8,color:'#0a2742'
+                                            }
+                                            ]
+                                    },
+                                    origin:'start'
+                                 },
+                                 data:$scope.data.dataAreaLine1
+                             },
+                             {
+                                 type:'line',
+                                 smooth:false,
+                                 symbol: 'none',
+                                 sampling: 'average',
+                                 lineStyle:{
+                                    color: '#c38926'
+                                 },
+                                 areaStyle:{
+                                    color:{
+                                        type:'linear',
+                                        x:0,
+                                        y:0,
+                                        x2:0,
+                                        y2:1,
+                                        colorStops:[
+                                            {
+                                                offset:0,color:'#c38926'
+                                            },
+                                            {
+                                                offset:0.8,color:'#1e2124'
+                                            }
+                                            ]
+                                    },
+                                    
+                                 },
+                                 data : $scope.data.dataAreaLine2
+                             }
+                         ]
+                    };
+                    //关系图（第一种方式）
+                    $scope.relationOptions = {
+                        grid:{
+                            
+                             top: 20,
+                             bottom:40,
+                         }, 
+                        xAxis:{
+                             type:'value',
+                             min:0,
+                             max:10,
+                             interval:1,
+                             offset:10,
+                             splitLine: false,
+                             axisLine:{
+                                show:false,
+                             },
+                             axisTick:{
+                                show:false,
+                             },
+                             axisLabel:{
+                                textStyle: {
+                                    fontSize:8
+                                },
+                                show:false
+                             }
+                             
+                         },
+                         yAxis:{
+                             type:'value',
+                             min:0,
+                             max:100,
+                             interval:20,
+                             offset:10,
+                             splitLine: false,
+                             axisLine:{
+                                show:false,
+                             },
+                             axisTick:{
+                                show:false,
+                             },
+                             axisLabel:{
+                                show:false
+                             }
+                             
+                         },
+                        series: [{
+                            type: 'graph',
+                            coordinateSystem:'cartesian2d',
+                            // layout: 'force',
+                            animationEasing:'backInOut',
+                            animationDuration:2000,
+                            // force: {
+                            //     repulsion: [10,60],
+                            // },
+                            symbolSize:5,
+                            data:[]
+                        }]
+                    };
+                    //关系图（第二种方式）
+                    $scope.relationOptions2 = {
+                        grid:{
+                             top: 20,
+                             bottom:40,
+                         }, 
+                        series: [{
+                            type: 'graph',
+                            // coordinateSystem:'cartesian2d',
+                            layout: 'force',
+                            roam:true,
+                            animationEasing:'cubicInOut',
+                            animationDuration:2000,
+                            // force: {
+                            //     repulsion: [10,60],
+                            // },
+                            symbolSize:5,
+                            data:[]
+                        }]
+                    };
+                    //离散图动画
+                    var _interval = $interval(function () {
+                        $scope.control.count++;
+                       for(var i=0;i<5;i++){
+                        $scope.data.dataScatter.shift();
+                        $scope.data.dataScatter = $scope.data.dataScatter.concat(generateRandomList(1,1))
+                       }
+                        
+                        $scope.scatterOptions.series[0].data = translateDate($scope.data.dataScatter);
+                    },3000);
+                    //大数据图动画
+                    var _area_interval = $interval(function(){
+                        $scope.control.area_count++
+                        var _x = $scope.data.dataAreaLine1[$scope.data.dataAreaLine1.length-1].value[0];
+                        $scope.data.dataAreaLine1.shift()
+                        $scope.data.dataAreaLine1.push(generateRandom(_x,80,35))
+                        $scope.data.dataAreaLine2.shift()
+                        $scope.data.dataAreaLine2.push(generateRandom(_x,30,10))
+                        $scope.areaOptions.series[0].data = $scope.data.dataAreaLine1;
+                        $scope.areaOptions.series[1].data = $scope.data.dataAreaLine2;
+                    },1000)
+                    //关系图动画
+                    var _relation_interval = $interval(function(){
+                        $scope.control.relate_count++;
+                       //第一种方式
+                        $scope.relationOptions.series[0].data.push(generateRelationRandom());
+                        // $scope.relationOptions2.series[0].data.push(generateRelationRandom2());
+                    },1000)
+                   $scope.$watch('control.count',function() {
+                       if($scope.control.count == 360){
+                            $interval.cancel(_interval);
+                       }
+                   });
+                   $scope.$watch('control.area_count',function() {
+                       if($scope.control.area_count == 360){
+                            $interval.cancel(_area_interval);
+                       }
+                   });
+                   $scope.$watch('control.relate_count',function() {
+                       if($scope.control.relate_count == 60){
+                            $interval.cancel(_relation_interval);
+                       }
+                   })
+            
+                }).directive('eChart',function(){
+                    return{
+                        restrict: 'A',
+                        replace: false,
+                        link : function($scope, element, attrs){
+                            var myChart = echarts.init(element[0]);
+                            console.log(myChart);
+                            $scope.$watch(attrs['eData'],function() {
+                                var option = $scope.$eval(attrs.eData);
+                                if(angular.isObject(option)){
+                                    myChart.setOption(option);
+                                }
+                            },true)
+                            $(window).resize(function(){
+                                myChart.resize();
+                            })
+                        }
+                    }
+                });
+        
+        }());
+    </script>
+</body>
+</html>
