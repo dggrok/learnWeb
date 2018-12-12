@@ -1,2 +1,1 @@
-Git is a version control system.
-Git is free software.
+EchartDemo 文件 主要包含的是基于angularjs框架的 一些图表demo
