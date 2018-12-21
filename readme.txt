@@ -1,1 +1,2 @@
 EchartDemo 文件 主要包含的是基于angularjs框架的 一些图表demo
+vueDemo1 根据vue-book实现的电商网站购物车案例，主要学习了vuex的使用
